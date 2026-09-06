@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NIDS</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo-section">
+
+            <h1>NETWORK INTRUSION</h1>
+
+            <span>DETECTION SYSTEM</span>
+
+        </div>
+
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <span>SYSTEM ACTIVE</span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-container">
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-title">
+                    TOTAL ALERTS
+                </div>
+
+                <div class="stat-value" id="total-alerts">
+                    0
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-title">
+                    TOTAL ATTACKS
+                </div>
+
+                <div class="stat-value" id="total-attacks">
+                    0
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-title">
+                    ACTIVE THREATS
+                </div>
+
+                <div class="stat-value" id="active-threats">
+                    0
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-title">
+                    TOP ATTACKER
+                </div>
+
+                <div class="stat-value ip-value" id="top-attacker">
+                    --
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= ALERT TABLE ================= -->
+
+        <section class="dashboard-section">
+
+
+            <div class="section-header">
+
+                <h2>SECURITY ALERTS</h2>
+
+                <span class="section-status">
+                    LIVE MONITORING
+                </span>
+
+            </div>
+
+
+
+            <div class="table-container">
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Source IP</th>
+
+                            <th>Destination IP</th>
+
+                            <th>Attack Type</th>
+
+                            <th>Severity</th>
+
+                            <th>Time</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody id="alert-table-body">
+
+                        <tr>
+
+                            <td colspan="6" class="no-data">
+
+                                Waiting for security event...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= CHARTS ================= -->
+
+        <section class="charts-grid">
+
+
+            <!-- ATTACKS OVER TIME -->
+
+            <div class="chart-card">
+
+                <h3>ATTACKS OVER TIME</h3>
+
+                <canvas id="attacksOverTimeChart"></canvas>
+
+            </div>
+
+
+
+            <!-- ATTACK TYPES -->
+
+            <div class="chart-card">
+
+                <h3>ATTACK TYPES</h3>
+
+                <canvas id="attackTypesChart"></canvas>
+
+            </div>
+
+
+
+            <!-- TOP ATTACKERS -->
+
+            <div class="chart-card chart-wide">
+
+                <h3>TOP ATTACKER IPs</h3>
+
+                <canvas id="topAttackersChart"></canvas>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= LIVE FEED ================= -->
+
+        <section class="dashboard-section live-feed-section">
+
+
+            <div class="section-header">
+
+                <h2>LIVE THREAT FEED</h2>
+
+                <span class="live-indicator">
+                    ● LIVE
+                </span>
+
+            </div>
+
+
+
+            <div class="live-feed" id="live-feed">
+
+                <div class="feed-message">
+
+                    <span class="feed-time">
+                        [SYSTEM]
+                    </span>
+
+                    Waiting for network activity...
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/dashboard.js"></script>
+
+    <script src="js/charts.js"></script>
+
+    <script src="js/websocket.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,539 @@
+/* ================================
+   NIDS DASHBOARD - GLOBAL STYLES
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #080d14;
+    --bg-secondary: #0d1520;
+    --bg-card: #111c29;
+    --bg-hover: #162434;
+
+    --border-color: #243447;
+
+    --text-primary: #e8f1f8;
+    --text-secondary: #7b8da0;
+
+    --cyan: #00d9ff;
+    --green: #01d015;
+    --yellow: #ffc507;
+    --orange: #ff7700;
+    --red: #f90404;
+    --purple: #700bea;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.header {
+    min-height: 95px;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo-section h1 {
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: var(--cyan);
+}
+
+.logo-section span {
+    font-size: 25px;
+    letter-spacing: 4px;
+    color: var(--text-secondary);
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 16px;
+
+    background: rgba(0, 230, 118, 0.08);
+    border: 1px solid rgba(1, 220, 114, 0.4);
+    border-radius: 6px;
+
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+
+    background: var(--green);
+    border-radius: 50%;
+
+    box-shadow: 0 0 10px var(--green);
+
+    animation: pulse 1.5s infinite;
+}
+
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.dashboard-container {
+    width: 92%;
+    max-width: 1500px;
+    margin: auto;
+    padding: 30px 0 50px;
+}
+
+
+/* ================================
+   STATISTICS CARDS
+================================ */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    padding: 22px;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--cyan);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 217, 255, 0.1);
+}
+
+.stat-title {
+    font-size: 15px;
+    font-weight: 400;
+
+    letter-spacing: 1.5px;
+
+    color: var(--text-secondary);
+
+    margin-bottom: 15px;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: bold;
+
+    color: var(--cyan);
+}
+
+.ip-value {
+    font-size: 20px;
+}
+
+
+/* ================================
+   DASHBOARD SECTIONS
+================================ */
+
+.dashboard-section {
+    background: var(--bg-secondary);
+
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    margin-bottom: 30px;
+
+    overflow: hidden;
+}
+
+.section-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 22px;
+
+    border-bottom: 1px solid var(--border-color);
+
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.section-header h2 {
+    font-size: 25px;
+
+    letter-spacing: 2px;
+
+    color: var(--text-primary);
+}
+
+.section-status {
+    color: var(--cyan);
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+}
+
+
+/* ================================
+   ALERT TABLE
+================================ */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 750px;
+}
+
+thead {
+    background: rgba(0, 217, 255, 0.04);
+}
+
+th {
+    padding: 15px;
+
+    text-align: left;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    color: var(--text-secondary);
+
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    padding: 15px;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid rgba(36, 52, 71, 0.6);
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: var(--bg-hover);
+}
+
+.no-data {
+    text-align: center;
+
+    padding: 30px;
+
+    color: var(--text-secondary);
+}
+
+
+/* ================================
+   SEVERITY BADGES
+================================ */
+
+.severity-low,
+.severity-medium,
+.severity-high,
+.severity-critical {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.severity-low {
+    color: var(--green);
+    background: rgba(0, 230, 118, 0.1);
+}
+
+.severity-medium {
+    color: var(--yellow);
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.severity-high {
+    color: var(--orange);
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.severity-critical {
+    color: var(--red);
+    background: rgba(255, 59, 59, 0.12);
+}
+
+
+/* ================================
+   STATUS BADGES
+================================ */
+
+.status-active {
+    color: var(--green);
+    font-weight: bold;
+}
+
+.status-resolved {
+    color: var(--green);
+    font-weight: bold;
+}
+
+
+/* ================================
+   CHARTS
+================================ */
+
+.charts-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.chart-card {
+    background: var(--bg-secondary);
+
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    padding: 20px;
+
+    min-height: 350px;
+}
+
+.chart-card h3 {
+    font-size: 13px;
+
+    letter-spacing: 1.5px;
+
+    color: var(--text-secondary);
+
+    margin-bottom: 25px;
+}
+
+.chart-wide {
+    grid-column: span 2;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    max-height: 280px;
+}
+
+
+/* ================================
+   LIVE THREAT FEED
+================================ */
+
+.live-feed-section {
+    margin-bottom: 0;
+}
+
+.live-indicator {
+    color: var(--green);
+
+    font-size: 14px;
+
+    animation: blink 1.2s infinite;
+}
+
+.live-feed {
+    height: 280px;
+
+    overflow-y: auto;
+
+    padding: 20px;
+
+    background: #060a0f;
+
+    font-family: "Courier New", monospace;
+}
+
+.feed-message {
+    padding: 10px 0;
+
+    border-bottom: 1px solid
+        rgba(36, 52, 71, 0.4);
+
+    font-size: 15px;
+
+    color: var(--text-secondary);
+}
+
+.feed-time {
+    color: var(--cyan);
+
+    margin-right: 10px;
+}
+
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+.live-feed::-webkit-scrollbar {
+    width: 6px;
+}
+
+.live-feed::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+.live-feed::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+.live-feed::-webkit-scrollbar-thumb:hover {
+    background: var(--cyan);
+}
+
+
+/* ================================
+   ANIMATIONS
+================================ */
+
+@keyframes pulse {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 1000px) {
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-wide {
+        grid-column: span 1;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .dashboard-container {
+        width: 94%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .system-status {
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .logo-section h1 {
+        font-size: 18px;
+    }
+
+    .logo-section span {
+        font-size: 14px;
+    }
+
+    .section-header {
+        padding: 15px;
+    }
+}
