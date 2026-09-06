@@ -284,7 +284,7 @@ Example system statistics:
 ```json
 {
     "active_threats": 1,
-    "top_attacker": "192.168.109.132",
+    "top_attacker": "192.x.x.x",
     "total_alerts": 1,
     "total_attacks": 1
 }
